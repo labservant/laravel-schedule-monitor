@@ -7,7 +7,7 @@ use Illuminate\Console\Scheduling\Event;
 
 class JobTask extends Task
 {
-    protected Event $task;
+    protected $task;
 
     public static function canHandleEvent(Event $event): bool
     {

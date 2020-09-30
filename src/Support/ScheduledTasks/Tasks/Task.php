@@ -13,11 +13,11 @@ use Spatie\ScheduleMonitor\Models\MonitoredScheduledTask;
 
 abstract class Task
 {
-    protected Event $event;
+    protected $event;
 
-    protected string $uniqueId;
+    protected $uniqueId;
 
-    protected ?MonitoredScheduledTask $monitoredScheduledTask = null;
+    protected $monitoredScheduledTask = null;
 
     abstract public static function canHandleEvent(Event $event): bool;
 

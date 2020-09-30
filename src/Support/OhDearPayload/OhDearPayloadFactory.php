@@ -17,7 +17,7 @@ class OhDearPayloadFactory
         ];
 
         $payloadClass = collect($payloadClasses)
-            ->first(fn (string $payloadClass) => $payloadClass::canHandle($logItem));
+            ->first(function (string $payloadClass) { return $payloadClass::canHandle($logItem); });
 
         if (! $payloadClass) {
             return null;

@@ -16,7 +16,7 @@ class MonitoredTasksTable extends ScheduledTasksTable
 
         $tasks = ScheduledTasks::createForSchedule()
             ->uniqueTasks()
-            ->filter(fn (Task $task) => $task->isBeingMonitored());
+            ->filter(function (Task $task) { return $task->isBeingMonitored(); });
 
         if ($tasks->isEmpty()) {
             $this->command->line('');
@@ -68,7 +68,7 @@ class MonitoredTasksTable extends ScheduledTasksTable
         $this->command->table($headers, $rows);
 
         if ($this->usingOhDear()) {
-            if ($tasks->contains(fn (Task $task) => ! $task->isBeingMonitoredAtOhDear())) {
+            if ($tasks->contains(function (Task $task) { return ! $task->isBeingMonitoredAtOhDear(); })) {
                 $this->command->line('');
                 $this->command->line('Some tasks are not registered on Oh Dear. You will not be notified when they do not run on time.');
                 $this->command->line('Run `php artisan schedule-monitor:sync` to register them and receive notifications.');
