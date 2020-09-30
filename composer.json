@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.3",
         "illuminate/bus": "^7.19|^8.0",
         "lorisleiva/cron-translator": "^0.1.1"
     },
